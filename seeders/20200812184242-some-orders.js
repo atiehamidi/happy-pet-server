@@ -16,6 +16,7 @@ module.exports = {
           rate: null,
           createdAt: new Date(),
           updatedAt: new Date(),
+          petId: 2,
         },
         {
           start: "2020-09-07 13:00:00",
@@ -28,6 +29,7 @@ module.exports = {
           rate: null,
           createdAt: new Date(),
           updatedAt: new Date(),
+          petId: 1,
         },
       ],
       {}

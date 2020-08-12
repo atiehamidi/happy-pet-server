@@ -15,6 +15,7 @@ module.exports = {
           descriptionOfPet: "lorem impos jbgv hvbb",
           createdAt: new Date(),
           updatedAt: new Date(),
+          userId: 2,
         },
         {
           type: "cat",
@@ -26,6 +27,7 @@ module.exports = {
           descriptionOfPet: "lorem impos jbgv hvbb",
           createdAt: new Date(),
           updatedAt: new Date(),
+          userId: 2,
         },
       ],
       {}
