@@ -1,3 +1,6 @@
+//load env variables as early as possible
+require("dotenv").config();
+
 const express = require("express");
 const loggerMiddleWare = require("morgan");
 const corsMiddleWare = require("cors");
