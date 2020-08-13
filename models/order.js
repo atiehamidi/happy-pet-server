@@ -9,6 +9,10 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       order.belongsTo(models.pet);
+      order.belongsToMany(models.type, {
+        through: "typeOrders",
+        foreignKey: "orderId",
+      });
     }
   }
   order.init(
