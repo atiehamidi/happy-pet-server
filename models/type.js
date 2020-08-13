@@ -16,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   type.init(
     {
-      typeOfOrder: { type: DataTypes.INTEGER, allowNull: false },
+      typeOfOrder: { type: DataTypes.STRING, allowNull: false },
       price: { type: DataTypes.INTEGER, allowNull: false },
       image: { type: DataTypes.TEXT, allowNull: false },
     },

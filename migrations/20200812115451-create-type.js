@@ -9,7 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER,
       },
       typeOfOrder: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false,
       },
       price: {

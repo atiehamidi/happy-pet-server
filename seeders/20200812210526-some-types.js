@@ -1,24 +1,33 @@
-'use strict';
+"use strict";
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-    */
+    return queryInterface.bulkInsert("types", [
+      {
+        typeOfOrder: "walking and keeping",
+        price: 2,
+        image: "https://ibb.co/6PrzFsF",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        typeOfOrder: "washing",
+        price: 10,
+        image: "https://ibb.co/bb0LfBw",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        typeOfOrder: "combing",
+        price: 20,
+        image: "https://ibb.co/H4cFrxf",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+    ]);
   },
 
   down: async (queryInterface, Sequelize) => {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
-  }
+    return queryInterface.bulkDelete("types", null, {});
+  },
 };
