@@ -144,7 +144,7 @@ router.post("/neworder/:id", authMiddleware, async (req, res, next) => {
       total,
       petId: id,
     });
-    return res.status(400).send({ message: "success", service });
+    return res.status(201).send({ message: "success", service });
   } catch (error) {
     console.log(error);
     return res.status(400).send({ message: "Something went wrong, sorry" });
@@ -161,7 +161,7 @@ router.post("/newtypeorder/:id", authMiddleware, async (req, res, next) => {
       orderId: id,
       typeId,
     });
-    return res.status(400).send({ message: "success", newTypeorder });
+    return res.status(201).send({ message: "success", newTypeorder });
   } catch (error) {
     console.log(error);
     return res.status(400).send({ message: "Something went wrong, sorry" });
