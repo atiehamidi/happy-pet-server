@@ -168,4 +168,19 @@ router.post("/newtypeorder/:id", authMiddleware, async (req, res, next) => {
   }
 });
 
+router.get("/admin", authMiddleware, async (req, res, next) => {
+  try {
+    const user = await User.findByPk(req.user.id);
+    const orders = await Order.findAll();
+    if (!user || !user.admin) {
+      return res.status(400).send({ message: "this user doesn't Admin" });
+    } else {
+      return res.status(201).send({ message: "success", orders });
+    }
+  } catch (error) {
+    console.log(error);
+    return res.status(400).send({ message: "Something went wrong, sorry" });
+  }
+});
+
 module.exports = router;
