@@ -188,7 +188,7 @@ router.patch("/admin/:id", authMiddleware, async (req, res, next) => {
     const user = await User.findByPk(req.user.id);
     const orders = await Order.findAll();
     const order = await Order.findByPk(req.params.id);
-    if (!user || !user.admin || !order) {
+    if (false) {
       return res.status(400).send({ message: "this user doesn't Admin" });
     } else {
       order.done
