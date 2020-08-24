@@ -195,7 +195,9 @@ router.patch("/admin/:id", authMiddleware, async (req, res, next) => {
         ? await order.update({ done: "false" })
         : await order.update({ done: "true" });
 
-      return res.status(201).send({ message: "success", orders });
+      return res
+        .status(201)
+        .send({ message: "statuses updated successfully", orders });
     }
   } catch (error) {
     console.log(error);
