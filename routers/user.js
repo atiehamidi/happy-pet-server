@@ -9,38 +9,6 @@ const TypeOrder = require("../models").typeOrder;
 const Type = require("../models").type;
 const router = new Router();
 
-router.get("/type", async (req, res, next) => {
-  try {
-    const type = await Type.findAll();
-
-    if (!type) {
-      return res.status(400).send({
-        message: "type not exiect",
-      });
-    }
-    return res.status(200).send(type);
-  } catch (error) {
-    console.log(error);
-    return res.status(400).send({ message: "Something went wrong, sorry" });
-  }
-});
-
-router.get("/clients", async (req, res, next) => {
-  try {
-    const clients = await Pet.findAll();
-
-    if (!clients) {
-      return res.status(400).send({
-        message: "client not exiect",
-      });
-    }
-    return res.status(200).send(clients);
-  } catch (error) {
-    console.log(error);
-    return res.status(400).send({ message: "Something went wrong, sorry" });
-  }
-});
-
 router.get("/dashboard", authMiddleware, async (req, res, next) => {
   try {
     const user = await User.findByPk(req.user.id, { include: [Pet] });
@@ -162,43 +130,6 @@ router.post("/newtypeorder/:id", authMiddleware, async (req, res, next) => {
       typeId,
     });
     return res.status(201).send({ message: "success", newTypeorder });
-  } catch (error) {
-    console.log(error);
-    return res.status(400).send({ message: "Something went wrong, sorry" });
-  }
-});
-
-router.get("/admin", authMiddleware, async (req, res, next) => {
-  try {
-    const user = await User.findByPk(req.user.id);
-    const orders = await Order.findAll();
-    if (!user || !user.admin) {
-      return res.status(400).send({ message: "this user doesn't Admin" });
-    } else {
-      return res.status(201).send({ message: "success", orders });
-    }
-  } catch (error) {
-    console.log(error);
-    return res.status(400).send({ message: "Something went wrong, sorry" });
-  }
-});
-
-router.patch("/admin/:id", authMiddleware, async (req, res, next) => {
-  try {
-    const user = await User.findByPk(req.user.id);
-    const orders = await Order.findAll();
-    const order = await Order.findByPk(req.params.id);
-    if (false) {
-      return res.status(400).send({ message: "this user doesn't Admin" });
-    } else {
-      order.done
-        ? await order.update({ done: "false" })
-        : await order.update({ done: "true" });
-
-      return res
-        .status(201)
-        .send({ message: "statuses updated successfully", orders });
-    }
   } catch (error) {
     console.log(error);
     return res.status(400).send({ message: "Something went wrong, sorry" });

@@ -8,6 +8,8 @@ const { PORT } = require("./config/constants");
 const authRouter = require("./routers/auth");
 const authMiddleWare = require("./auth/middleware");
 const userRouter = require("./routers/user");
+const homepageRouter = require("./routers/homepage");
+const adminRouter = require("./routers/admin");
 
 const app = express();
 
@@ -156,6 +158,8 @@ app.post("/authorized_post_request", authMiddleWare, (req, res) => {
 
 app.use("/", authRouter);
 app.use("/", userRouter);
+app.use("/", homepageRouter);
+app.use("/", adminRouter);
 
 // Listen for connections on specified port (default is port 4000)
 
