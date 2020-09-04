@@ -98,6 +98,7 @@ router.post("/neworder/:id", authMiddleware, async (req, res, next) => {
     const {
       start,
       end,
+      serviceId,
       latitude,
       longitude,
       descriptionOfOrder,
@@ -112,6 +113,7 @@ router.post("/neworder/:id", authMiddleware, async (req, res, next) => {
       total,
       petId: id,
     });
+
     return res.status(201).send({ message: "success", service });
   } catch (error) {
     console.log(error);
@@ -138,8 +140,6 @@ router.post("/newtypeorder/:id", authMiddleware, async (req, res, next) => {
 
 router.patch("/user/edit", authMiddleware, async (req, res) => {
   const id = req.user.id;
-
-  const { email } = req.body;
   const user = await User.findByPk(id);
   console.log(user);
   try {
