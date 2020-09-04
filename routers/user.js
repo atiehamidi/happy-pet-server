@@ -136,4 +136,21 @@ router.post("/newtypeorder/:id", authMiddleware, async (req, res, next) => {
   }
 });
 
+router.patch("/user/edit", authMiddleware, async (req, res) => {
+  const id = req.user.id;
+
+  const { email } = req.body;
+  const user = await User.findByPk(id);
+  console.log(user);
+  try {
+    const editedUser = await user.update(req.body);
+    console.log(editedUser);
+    delete editedUser.dataValues["password"];
+    return res.status(201).send({ message: "that's ok", editedUser });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).send({ message: "Something went wrong, sorry" });
+  }
+});
+
 module.exports = router;
